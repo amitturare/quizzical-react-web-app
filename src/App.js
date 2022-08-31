@@ -10,7 +10,7 @@ import { ReactComponent as YellowBlob } from "./assets/yellow-blob.svg";
 import "./App.css";
 
 // TODO:
-// 1. Add loader
+// 1. Add loader and make it smooth
 // 2. Make footer
 
 const App = () => {

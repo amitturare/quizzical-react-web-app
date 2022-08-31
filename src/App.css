@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Karla:wght@400;500;600;700&display=swap');
 
 :root {
-    --heading-font: 'Inter', sans-serif;
-    --secondary-font: 'Karla', sans-serif;
-
+    --heading-font: 'Karla', sans-serif;
+    --secondary-font: 'Inter', sans-serif;
+    
     --primary-color: #293264;
     --secondary-color:#4D5B9E;
     --tertiary-color: #D6DBF5;
