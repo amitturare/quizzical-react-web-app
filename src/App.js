@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Starting from "./routes/starting/starting.page";
+import Quiz from "./routes/quiz/quiz.page";
+// import Footer from "./components/footer/footer.component";
+
+import { ReactComponent as BlueBlob } from "./assets/blue-blob.svg";
+import { ReactComponent as YellowBlob } from "./assets/yellow-blob.svg";
+
+import "./App.css";
+
+// TODO:
+// 1. Add loader
+// 2. Make footer
+
+const App = () => {
+    return (
+        <div className="app">
+            <BlueBlob className="blue-blob" />
+            <YellowBlob className="yellow-blob" />
+            <div className="content">
+                <Routes>
+                    <Route path="/" element={<Starting />} />
+                    <Route path="/quiz" element={<Quiz />} />
+                </Routes>
+            </div>
+            {/* <Footer /> */}
+        </div>
+    );
+};
 
 export default App;

@@ -1,38 +1,54 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Karla:wght@400;500;600;700&display=swap');
+
+:root {
+    --heading-font: 'Inter', sans-serif;
+    --secondary-font: 'Karla', sans-serif;
+
+    --primary-color: #293264;
+    --secondary-color:#4D5B9E;
+    --tertiary-color: #D6DBF5;
+    
+    --gray-color: #A1A9CD;
+    --background-color: #F5F7FB;
+    --green-color: #94D7A2;
+    --red-color: #F8BCBC
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    color: var(--primary-color);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+    background: var(--background-color);
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.content {
+    min-width: 80vw;
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.App-link {
-  color: #61dafb;
+.blue-blob {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    transform: scale(2);
+    overflow: hidden;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.yellow-blob {
+    position: fixed;
+    right: -10rem;
+    top: -5rem;
+    overflow: hidden;
+    transform: scale(1.5);
 }
