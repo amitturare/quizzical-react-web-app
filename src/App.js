@@ -12,6 +12,7 @@ import "./App.css";
 // TODO:
 // 1. Add loader and make it smooth
 // 2. Make footer
+// 3. Add animations
 
 const App = () => {
     return (
@@ -30,3 +31,4 @@ const App = () => {
 };
 
 export default App;
+    

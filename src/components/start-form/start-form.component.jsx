@@ -15,7 +15,7 @@ import {
 
 const StartForm = ({ categoriesList }) => {
     const navigate = useNavigate();
-    const { setName, setCategories, setDifficulty } =
+    const { setName, setCategoryID, setDifficulty } =
         useContext(QuizConfigContext);
 
     // * To handle change
@@ -39,7 +39,7 @@ const StartForm = ({ categoriesList }) => {
         e.preventDefault();
 
         setName(formData.name);
-        setCategories(formData.categories);
+        setCategoryID(formData.categories);
         setDifficulty(formData.difficulty);
 
         navigate("/quiz");
@@ -49,11 +49,12 @@ const StartForm = ({ categoriesList }) => {
         <form onSubmit={onSubmitHandler}>
             <Group>
                 <Input
-                    type="text"
                     required
+                    type="text"
                     name="name"
                     onChange={onChangeHandler}
                     value={formData.name}
+                    autoComplete="off"
                 />
                 <FormInputLabel shrink={formData.name.length} htmlFor="name">
                     Name
@@ -62,6 +63,7 @@ const StartForm = ({ categoriesList }) => {
 
             <Group>
                 <SelectElement
+                    required
                     name="categories"
                     onChange={onChangeHandler}
                     value={formData.categories}
@@ -83,6 +85,7 @@ const StartForm = ({ categoriesList }) => {
 
             <Group>
                 <SelectElement
+                    required
                     name="difficulty"
                     onChange={onChangeHandler}
                     value={formData.difficulty}

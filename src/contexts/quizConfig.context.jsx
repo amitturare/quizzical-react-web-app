@@ -6,21 +6,21 @@ export const QuizConfigContext = createContext({
     difficulty: "",
 
     setName: () => {},
-    setCategories: () => {},
+    setCategoryID: () => {},
     setDifficulty: () => {},
 });
 
 export const QuizConfigProvider = ({ children }) => {
     const [name, setName] = useState("");
-    const [categories, setCategories] = useState("");
+    const [categoryID, setCategoryID] = useState("");
     const [difficulty, setDifficulty] = useState("");
 
     const value = {
         name,
-        categories,
+        categoryID,
         difficulty,
         setName,
-        setCategories,
+        setCategoryID,
         setDifficulty,
     };
 
