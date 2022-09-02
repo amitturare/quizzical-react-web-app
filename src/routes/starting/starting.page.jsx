@@ -5,7 +5,7 @@ import StartForm from "../../components/start-form/start-form.component";
 
 import { LoaderContext } from "../../contexts/loader.context";
 
-import { StartingPageFormContainer, Title } from "./starting.styles";
+import { StartPageContainer, Title } from "./starting.styles";
 
 const Starting = () => {
     const [categoriesList, setCategoriesList] = useState([]);
@@ -30,7 +30,7 @@ const Starting = () => {
     }, []);
 
     return (
-        <StartingPageFormContainer>
+        <StartPageContainer>
             {isLoading && <Loader />}
             <Title>
                 <h1>Quizzical</h1>
@@ -38,7 +38,7 @@ const Starting = () => {
             </Title>
 
             <StartForm categoriesList={categoriesList} />
-        </StartingPageFormContainer>
+        </StartPageContainer>
     );
 };
 

@@ -1,35 +1,46 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Loader from "../../components/loader/loader.component";
 import Question from "../../components/question/question.component";
+import Button from "../../components/button/button.component";
 
 import { LoaderContext } from "../../contexts/loader.context";
 import { QuizConfigContext } from "../../contexts/quizConfig.context";
 
-import "./quiz.styles.css";
+import { QuizPageContainer, CheckResultsContainer } from "./quiz.styles";
 
 //* Helper function to make a new array with object having shuffled options
-const newQuestionsArray = (fetchedQuizData) =>
+const newQuestionsObject = (fetchedQuizData) =>
     fetchedQuizData.map((item) => {
         const { incorrect_answers, correct_answer, question } = item;
 
         const optionsArr = [...incorrect_answers, correct_answer].sort(
             (a, b) => 0.5 - Math.random()
         );
+        const options = [];
+        optionsArr.forEach((option) =>
+            options.push({
+                optionText: option,
+                isCorrect: option === correct_answer,
+            })
+        );
 
         return {
-            question: question,
-            options: optionsArr,
-            correctAns: correct_answer,
+            questionText: question,
+            options: options,
         };
     });
 
 const Quiz = () => {
+    const navigate = useNavigate();
+
     const { isLoading, setIsLoading } = useContext(LoaderContext);
     const { name, categoryID, difficulty } = useContext(QuizConfigContext);
 
     const [quizData, setQuizData] = useState([]);
 
+    //* To get quiz data
     useEffect(() => {
         (async () => {
             try {
@@ -45,21 +56,33 @@ const Quiz = () => {
             }
         })();
     }, []);
+    const questions = newQuestionsObject(quizData);
 
-    const questions = newQuestionsArray(quizData);
+    //* Back Button
+    const onBackBtnHandler = () => {
+        navigate("/");
+    };
 
     return (
-        <div>
+        <QuizPageContainer>
             {isLoading && <Loader />}
-            {questions.map((questionObject, i) => {
-                return (
-                    <Question
-                        key={questionObject.question}
-                        questionObject={questionObject}
-                    />
-                );
-            })}
-        </div>
+            <div>
+                <Button buttonType="back" onClick={onBackBtnHandler}>
+                    ↩ Back
+                </Button>
+                {questions.map((questionObject, i) => {
+                    return (
+                        <Question
+                            key={questionObject.questionText}
+                            questionObject={questionObject}
+                        />
+                    );
+                })}
+            </div>
+            <CheckResultsContainer>
+                <Button buttonType="base">Check answers</Button>
+            </CheckResultsContainer>
+        </QuizPageContainer>
     );
 };
 

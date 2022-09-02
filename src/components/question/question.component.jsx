@@ -1,20 +1,36 @@
-import "./question.styles.css";
+// import { useState } from "react";
+import { decode } from "html-entities";
+
+import Button from "../button/button.component";
+
+import {
+    QuestionContainer,
+    QuestionText,
+    OptionsContainer,
+} from "./question.styles";
 
 const Question = ({ questionObject }) => {
-    const { question, options, correctAns } = questionObject;
+    const { questionText, options } = questionObject;
+    // const { score, setScore } = useState(0);
 
     return (
-        <div className="question-container">
-            <p className="question">{question}</p>
+        <QuestionContainer>
+            <QuestionText>{decode(questionText)}</QuestionText>
 
-            <div className="options-container">
-                {options.map((option) => (
-                    <li key={option}>
-                        <button className="option">{option}</button>
-                    </li>
-                ))}
-            </div>
-        </div>
+            <OptionsContainer>
+                {options.map((option) => {
+                    return (
+                        <Button
+                            buttonType="quiz"
+                            key={option.optionText}
+                            option={option}
+                        >
+                            {decode(option.optionText)}
+                        </Button>
+                    );
+                })}
+            </OptionsContainer>
+        </QuestionContainer>
     );
 };
 

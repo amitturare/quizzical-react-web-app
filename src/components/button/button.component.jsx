@@ -1,9 +1,11 @@
-import { BaseButton, TwitterButton } from "./button.styles";
+import { BaseButton, TwitterButton, QuizButton, BackButton } from "./button.styles";
 
 const getButton = (type = "base") =>
     ({
         base: BaseButton,
         twitter: TwitterButton,
+        quiz: QuizButton,
+        back: BackButton,
     }[type]);
 
 const Button = ({ children, buttonType, ...otherProps }) => {
