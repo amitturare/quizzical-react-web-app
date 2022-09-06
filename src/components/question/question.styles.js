@@ -13,6 +13,10 @@ export const QuestionText = styled.p`
     font-size: 1.25rem;
     line-height: 19px;
     margin-bottom: 1rem;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 `;
 
 export const OptionsContainer = styled.div`

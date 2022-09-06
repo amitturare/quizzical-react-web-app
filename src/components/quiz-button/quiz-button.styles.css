@@ -1,0 +1,43 @@
+.base {
+    padding: 5px 10px;
+    outline: none;
+    color: #293264;
+    background: transparent;
+    border: 1px solid #4d5b9e;
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    -moz-user-select: none;
+    user-select: none; /* Standard syntax */
+}
+.hover:hover {
+    cursor: pointer;
+    background: #d6dbf5;
+}
+.active:active {
+    transform: translateY(5px);
+}
+
+.selected {
+    background: #d6dbf5;
+    border: none;
+}
+.correct {
+    background: #94d7a2;
+    border: none;
+}
+.wrong {
+    background: #f8bcbc;
+    border: none;
+    font-weight: normal;
+}
+.grayed {
+    color: #4d5b9e;
+    font-weight: normal;
+    
+}

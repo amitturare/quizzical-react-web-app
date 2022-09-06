@@ -14,7 +14,6 @@ export const BaseButton = styled.button`
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
 
-
     &:hover {
         filter: brightness(110%) saturate(110%);
     }
@@ -28,17 +27,17 @@ export const TwitterButton = styled(BaseButton)`
     background: #1da1f2;
 `;
 
-export const QuizButton = styled(BaseButton)`
+export const BackButton = styled(BaseButton)`
     padding: 5px 10px;
     font-size: 14px;
+    font-weight: 500;
     color: #293264;
     background: transparent;
     border: 1px solid #4d5b9e;
     border-radius: 8px;
+    font-weight: 400;
 
     &:hover {
         background: #d6dbf5;
     }
 `;
-
-export const BackButton = styled(QuizButton)``;

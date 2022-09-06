@@ -1,7 +1,9 @@
-// import { useState } from "react";
+import { useContext } from "react";
 import { decode } from "html-entities";
 
-import Button from "../button/button.component";
+import QuizButton from "../quiz-button/quiz-button.component";
+
+import { QuizConfigContext } from "../../contexts/quizConfig.context";
 
 import {
     QuestionContainer,
@@ -9,24 +11,43 @@ import {
     OptionsContainer,
 } from "./question.styles";
 
-const Question = ({ questionObject }) => {
+const Question = ({ questionObject, id }) => {
     const { questionText, options } = questionObject;
-    // const { score, setScore } = useState(0);
+
+    const { setSelectedOptions, checkAnswersStatus } =
+        useContext(QuizConfigContext);
+
+    //* Select options and store their values
+    const onOptionBtnHandler = (e) => {
+        const optionsContainer = e.target.parentElement;
+        const questionId = optionsContainer.parentElement.children[0].id;
+        const optionsArr = Array.from(optionsContainer.children);
+
+        if (!checkAnswersStatus) {
+            optionsArr.forEach((option) => option.classList.remove("selected"));
+            e.target.classList.add("selected");
+
+            setSelectedOptions((prev) => ({
+                ...prev,
+                [questionId]: optionsArr,
+            }));
+        }
+    };
 
     return (
         <QuestionContainer>
-            <QuestionText>{decode(questionText)}</QuestionText>
+            <QuestionText id={id}>{decode(questionText)}</QuestionText>
 
             <OptionsContainer>
                 {options.map((option) => {
                     return (
-                        <Button
-                            buttonType="quiz"
-                            key={option.optionText}
-                            option={option}
+                        <QuizButton
+                            onClick={onOptionBtnHandler}
+                            buttonType="base"
+                            key={option}
                         >
-                            {decode(option.optionText)}
-                        </Button>
+                            {decode(option)}
+                        </QuizButton>
                     );
                 })}
             </OptionsContainer>

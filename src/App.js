@@ -13,6 +13,7 @@ import "./App.css";
 // 1. Add loader and make it smooth
 // 2. Make footer
 // 3. Add animations
+// 4. Disable back button when clicked on checked answers
 
 const App = () => {
     return (
@@ -31,4 +32,3 @@ const App = () => {
 };
 
 export default App;
-    
