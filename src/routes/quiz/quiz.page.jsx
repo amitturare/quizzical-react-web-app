@@ -100,7 +100,6 @@ const Quiz = () => {
                     (option) => option.classList.contains("selected")
                 );
                 const finalSelectedOption = selectedOption[0];
-
                 const quizDataCurrentQuestionCorrectAns = decode(
                     quizData[i].correctAns
                 );
@@ -118,6 +117,12 @@ const Quiz = () => {
                 }
             });
         }
+    };
+
+    const onPlayAgainBtnHandler = () => {
+        setCheckAnswersStatus(false);
+        setSelectedOptions({});
+        navigate("/");
     };
     /* 
 quizData - 
@@ -160,9 +165,29 @@ selectedOptions -
                 })}
             </div>
             <CheckResultsContainer>
-                <Button buttonType="base" onClick={onCheckAnswersBtnHandler}>
-                    Check answers
-                </Button>
+                {!checkAnswersStatus ? (
+                    <div>
+                        <p>Answer all the questions and click here →</p>
+                        <Button
+                            buttonType="base"
+                            onClick={onCheckAnswersBtnHandler}
+                        >
+                            Check answers
+                        </Button>
+                    </div>
+                ) : (
+                    <div>
+                        <p style={{ marginRight: "1rem" }}>
+                            You scored {totalPoints}/5 correct answers
+                        </p>
+                        <Button
+                            buttonType="base"
+                            onClick={onPlayAgainBtnHandler}
+                        >
+                            Play Again
+                        </Button>
+                    </div>
+                )}
             </CheckResultsContainer>
         </QuizPageContainer>
     );
